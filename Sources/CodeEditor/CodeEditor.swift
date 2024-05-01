@@ -324,6 +324,20 @@ public struct CodeEditor: View {
   }
 }
 
+extension CodeEditor: Equatable {
+    public static func == (lhs: CodeEditor, rhs: CodeEditor) -> Bool {
+        return lhs.source.wrappedValue == rhs.source.wrappedValue
+        && lhs.selection?.wrappedValue == rhs.selection?.wrappedValue
+        && lhs.fontSize?.wrappedValue == rhs.fontSize?.wrappedValue
+        && lhs.language?.rawValue == rhs.language?.rawValue
+        && lhs.flags == rhs.flags
+        && lhs.indentStyle == rhs.indentStyle
+        && lhs.autoPairs == rhs.autoPairs
+        && lhs.inset == rhs.inset
+        && lhs.autoscroll == rhs.autoscroll
+    }
+}
+
 struct CodeEditor_Previews: PreviewProvider {
   
   static var previews: some View {
